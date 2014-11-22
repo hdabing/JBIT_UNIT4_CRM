@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<!--配置数据源-->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:oracle:thin:@127.0.0.1:1521:ORCL</value>
+		</property>
+		<property name="username">
+			<value>uCRM</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>
+	</bean>
+	
+	<!--配置Hibernate的会话-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>entity/Area.hbm.xml</value>
+				<value>entity/Author.hbm.xml</value>
+				<value>entity/Chances.hbm.xml</value>
+				<value>entity/Chancesplan.hbm.xml</value>
+				<value>entity/Chancestate.hbm.xml</value>
+				<value>entity/Customer.hbm.xml</value>
+				<value>entity/Customercontact.hbm.xml</value>
+				<value>entity/Customerlevel.hbm.xml</value>
+				<value>entity/Customerlost.hbm.xml</value>
+				<value>entity/Orderlist.hbm.xml</value>
+				<value>entity/Orders.hbm.xml</value>
+				<value>entity/Product.hbm.xml</value>
+				<value>entity/Relationship.hbm.xml</value>
+				<value>entity/Role.hbm.xml</value>
+				<value>entity/Roleauthor.hbm.xml</value>
+				<value>entity/Service.hbm.xml</value>
+				<value>entity/Servicelist.hbm.xml</value>
+				<value>entity/Servicestate.hbm.xml</value>
+				<value>entity/Users.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!--配置实体类-->
+	<bean id="area" class="entity.Area" />
+	<bean id="author" class="entity.Author" />
+	<bean id="chances" class="entity.Chances" />
+	<bean id="chancesplan" class="entity.Chancesplan" />
+	<bean id="chancestate" class="entity.Chancestate" />
+	<bean id="customer" class="entity.Customer" />
+	<bean id="customercontact" class="entity.Customercontact" />
+	<bean id="customerlevel" class="entity.Customerlevel" />
+	<bean id="customerlost" class="entity.Customerlost" />
+	<bean id="orderlist" class="entity.Orderlist" />
+	<bean id="orders" class="entity.Orders" />
+	<bean id="product" class="entity.Product" />
+	<bean id="relationship" class="entity.Relationship" />
+	<bean id="role" class="entity.Role" />
+	<bean id="roleauthor" class="entity.Roleauthor" />
+	<bean id="service" class="entity.Service" />
+	<bean id="servicelist" class="entity.Servicelist" />
+	<bean id="servicestate" class="entity.Servicestate" />
+	<bean id="users" class="entity.Users" />
+	
+	<!--接口实现类-->
+	<bean id="areadaoimpl" class="dao.areaDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="authordaoimpl" class="dao.authorDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="chancesdaoimpl" class="dao.chancesDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="chancesplandaoimpl" class="dao.chancesplanDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="chancestatedaoimpl" class="dao.chancestateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="customercontactdaoimpl" class="dao.customercontactDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="customerdaoimpl" class="dao.customerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="customerleveldaoimpl" class="dao.customerlevelDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="customerlostdaoimpl" class="dao.customerlostDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="orderlistdaoimpl" class="dao.orderlistDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="ordersdaoimpl" class="dao.ordersDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="productdaoimpl" class="dao.productDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="relationshipdaoimpl" class="dao.relationshipDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roleauthordaoimpl" class="dao.roleauthorDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roledaoimpl" class="dao.roleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="servicedaoimpl" class="dao.serviceDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="servicelistdaoimpl" class="dao.servicelistDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="servicestatedaoimpl" class="dao.servicestateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="usersdaoimpl" class="dao.usersDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	<!--服务类-->
+	<bean id="userservice" class="service.userService">
+		<property name="usersdaoimpl" ref="usersdaoimpl" />
+	</bean>
+	<bean id="roleservice" class="service.roleService">
+		<property name="roledaoimpl" ref="roledaoimpl" />
+		<property name="authordaoimpl" ref="authordaoimpl" />
+		<property name="roleauthordaoimpl" ref="roleauthordaoimpl" />
+	</bean>
+	<bean id="chanceservice" class="service.chanceService">
+		<property name="chancesdaoimpl" ref="chancesdaoimpl" />
+		<property name="chancesplandaoimpl" ref="chancesplandaoimpl" />
+		<property name="customerdaoimpl" ref="customerdaoimpl" />
+	</bean>
+	<bean id="customerlevelservice" class="service.customerlevelService">
+		<property name="customerleveldaoimpl" ref="customerleveldaoimpl" />
+	</bean>
+	<bean id="areaservice" class="service.areaService">
+		<property name="areadaoimpl" ref="areadaoimpl" />
+	</bean>
+	<bean id="customerservice" class="service.customerService">
+		<property name="customerdaoimpl" ref="customerdaoimpl" />
+		<property name="customercontactdaoimpl" ref="customercontactdaoimpl" />
+	</bean>
+	<bean id="customercontactservice" class="service.customercontactService">
+		<property name="customercontactdaoimpl" ref="customercontactdaoimpl" />
+	</bean>
+	<bean id="relationshipservice" class="service.relationshipService">
+		<property name="relationshipdaoimpl" ref="relationshipdaoimpl" />
+	</bean>
+	<bean id="orderservice" class="service.orderService">
+		<property name="ordersdaoimpl" ref="ordersdaoimpl" />
+		<property name="orderlistdaoimpl" ref="orderlistdaoimpl" />
+	</bean>
+	<bean id="customerlostservice" class="service.customerlostService">
+		<property name="customerlostdaoimpl" ref="customerlostdaoimpl" />
+	</bean>
+	<bean id="serviceservice" class="service.serviceService">
+		<property name="servicedaoimpl" ref="servicedaoimpl" />
+		<property name="servicestatedaoimpl" ref="servicestatedaoimpl" />
+		<property name="servicelistdaoimpl" ref="servicelistdaoimpl" />
+	</bean>
+	<bean id="productservice" class="service.productService">
+		<property name="productdaoimpl" ref="productdaoimpl" />
+	</bean>
+</beans>

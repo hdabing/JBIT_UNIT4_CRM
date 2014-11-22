@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="entity.Chances" table="CHANCES" >
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" precision="9" scale="0" />
+            <generator class="sequence" >
+            	<param name="sequence">chancesid</param>
+            </generator>
+        </id>
+        <property name="name" type="java.lang.String">
+        	<column name="NAME" length="20"/>
+        </property>
+        <property name="areaid" type="java.lang.Integer">
+        	<column name="AREAID" />
+        </property>
+        <property name="levelid" type="java.lang.Integer">
+        	<column name="LEVELID" />
+        </property>
+        <property name="managername" type="java.lang.String">
+        	<column name="MANAGERNAME" length="20" />
+        </property>
+        <property name="chancesfrom" type="java.lang.String">
+        	<column name="CHANCESFROM" length="20" />
+        </property>
+        <property name="phone" type="java.lang.String">
+        	<column name="PHONE" length="20" />
+        </property>
+        <property name="content" type="java.lang.String">
+        	<column name="CONTENT" length="20" />
+        </property>
+        <property name="successrate" type="java.lang.Integer">
+        	<column name="SUCCESSRATE" />
+        </property>
+        <property name="chancesdesc" type="java.lang.String">
+        	<column name="CHANCESDESC" length="200" />
+        </property>
+        <property name="userid" type="java.lang.Integer">
+        	<column name="USERID" />
+        </property>
+        <property name="createuserid" type="java.lang.Integer">
+        	<column name="CREATEUSERID" />
+        </property>
+        <property name="createtime" type="java.sql.Date">
+        	<column name="CREATETIME" />
+        </property>
+        <property name="chancestime" type="java.sql.Date">
+        	<column name="CHANCESTIME" />
+        </property>
+        <property name="state" type="java.lang.Integer">
+        	<column name="STATE" />
+        </property>
+        <property name="issuccess" type="java.lang.Integer">
+        	<column name="ISSUCCESS" />
+        </property>
+        <many-to-one name="customerlevel" class="entity.Customerlevel" fetch="select" update="false" insert="false">
+        	<column name="levelid" />
+        </many-to-one>
+        <many-to-one name="area" class="entity.Area" fetch="select" update="false" insert="false">
+        	<column name="areaid" />
+        </many-to-one>
+        <many-to-one name="chancestate" class="entity.Chancestate" fetch="select" update="false" insert="false">
+        	<column name="state" />
+        </many-to-one>
+        <many-to-one name="grantuser" class="entity.Users" fetch="select" update="false" insert="false">
+        	<column name="userid" />
+        </many-to-one>
+        <many-to-one name="createuser" class="entity.Users" fetch="select" update="false" insert="false">
+        	<column name="createuserid" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

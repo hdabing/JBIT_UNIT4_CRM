@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+encoding//WebContent/base/addCustomerlevel.jsp=UTF-8
+encoding//WebContent/chances/addChancesplan.jsp=UTF-8
+encoding//WebContent/chances/executeChancesplan.jsp=UTF-8
+encoding//WebContent/customer/addRelationship.jsp=UTF-8
+encoding//WebContent/customer/editCustomer.jsp=UTF-8
+encoding//WebContent/customer/editCustomercontact.jsp=UTF-8
+encoding//WebContent/customer/listCustomercontact.jsp=UTF-8
+encoding//WebContent/customer/listRelationship.jsp=UTF-8
+encoding//WebContent/customerlost/delayLost.jsp=UTF-8
+encoding//WebContent/order/listOrderlist.jsp=UTF-8
+encoding//WebContent/service/addServicelist.jsp=UTF-8
+encoding//WebContent/service/archServicelist.jsp=UTF-8
+encoding//WebContent/service/backServicelist.jsp=UTF-8
+encoding//WebContent/service/operatorServicelist.jsp=UTF-8

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="entity.Servicelist" table="SERVICELIST" >
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" precision="9" scale="0" />
+            <generator class="sequence" >
+            	<param name="sequence">servicelistid</param>
+            </generator>
+        </id>
+        <property name="customerid" type="java.lang.Integer">
+        	<column name="CUSTOMERID" />
+        </property>
+        <property name="operatorid" type="java.lang.Integer">
+        	<column name="OPERATORID" />
+        </property>
+        <property name="userid" type="java.lang.Integer">
+        	<column name="USERID" />
+        </property>
+        <property name="serviceid" type="java.lang.Integer">
+        	<column name="SERVICEID" />
+        </property>
+        <property name="summary" type="java.lang.String">
+        	<column name="SUMMARY" length="20" />
+        </property>
+        <property name="content" type="java.lang.String">
+        	<column name="CONTENT" length="200" />
+        </property>
+        <property name="state" type="java.lang.Integer">
+        	<column name="STATE" />
+        </property>
+        <property name="createtime" type="java.sql.Date">
+        	<column name="CREATETIME" />
+        </property>
+        <property name="granttime" type="java.sql.Date">
+        	<column name="GRANTTIME" />
+        </property>
+        <property name="operatortime" type="java.sql.Date">
+        	<column name="OPERATORTIME" />
+        </property>
+        <property name="operatorcontent" type="java.lang.String">
+        	<column name="OPERATORCONTENT" length="200" />
+        </property>
+        <property name="resultcontent" type="java.lang.String">
+        	<column name="RESULTCONTENT" length="200" />
+        </property>
+        <property name="agreelevel" type="java.lang.Integer">
+        	<column name="AGREELEVEL" />
+        </property>
+        <property name="createuserid" type="java.lang.Integer">
+        	<column name="CREATEUSERID" />
+        </property>
+        <many-to-one name="servicestate" class="entity.Servicestate" fetch="select" update="false" insert="false">
+        	<column name="state" />
+        </many-to-one>
+        <many-to-one name="service" class="entity.Service" fetch="select" update="false" insert="false">
+        	<column name="serviceid" />
+        </many-to-one>
+        <many-to-one name="customer" class="entity.Customer" fetch="select" update="false" insert="false">
+        	<column name="customerid" />
+        </many-to-one>
+        <many-to-one name="operator" class="entity.Users" fetch="select" update="false" insert="false">
+        	<column name="operatorid" />
+        </many-to-one>
+        <many-to-one name="manager" class="entity.Users" fetch="select" update="false" insert="false">
+        	<column name="userid" />
+        </many-to-one>
+        <many-to-one name="createuser" class="entity.Users" fetch="select" update="false" insert="false">
+        	<column name="createuserid" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="entity.Customerlost" table="CUSTOMERLOST" >
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" precision="9" scale="0" />
+            <generator class="sequence" >
+            	<param name="sequence">customerlostid</param>
+            </generator>
+        </id>
+        <property name="customerid" type="java.lang.Integer">
+        	<column name="CUSTOMERID" />
+        </property>
+        <property name="lastorder" type="java.sql.Date">
+        	<column name="LASTORDER" />
+        </property>
+        <property name="lostday" type="java.sql.Date">
+        	<column name="LOSTDAY" />
+        </property>
+        <property name="content" type="java.lang.String">
+        	<column name="CONTENT" />
+        </property>
+        <property name="lostcause" type="java.lang.String">
+        	<column name="LOSTCAUSE" />
+        </property>
+        <property name="state" type="java.lang.String">
+        	<column name="STATE" />
+        </property>
+        <many-to-one name="customer" class="entity.Customer" fetch="select" update="false" insert="false">
+        	<column name="customerid" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

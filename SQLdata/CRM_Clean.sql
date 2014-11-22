@@ -1,0 +1,61 @@
+drop sequence roleid;
+drop sequence authorid;
+drop sequence roleauthorid;
+drop sequence usersid;
+drop sequence productid;
+drop sequence areaid;
+drop sequence serviceid;
+drop sequence servicelistid;
+drop sequence servicestateid;
+drop sequence customerlevelid;
+drop sequence chancesid;
+drop sequence chancestateid;
+--chancesplanid
+drop sequence customerid;
+drop sequence customerlostid;
+drop sequence customercontactid;
+drop sequence relationshipid;
+drop sequence ordersid;
+drop sequence orderlistid;
+
+truncate table Users;
+truncate table Role;
+truncate table Author;
+truncate table roleauthor;
+truncate table area;
+truncate table customerlevel;
+truncate table Chances;
+truncate table chancestate;
+truncate table customer;
+truncate table customercontact;
+truncate table relationship;
+truncate table orders;
+truncate table orderlist;
+truncate table product;
+truncate table customerlost;
+truncate table service;
+truncate table servicestate;
+truncate table servicelist;
+
+
+
+DROP TABLE ROLE;
+DROP TABLE AUTHOR;
+DROP TABLE ROLEAUTHOR;
+DROP TABLE USERS;
+DROP TABLE PRODUCT;
+DROP TABLE AREA;
+DROP TABLE SERVICE;
+DROP TABLE SERVICELIST;
+DROP TABLE SERVICESTATE;
+DROP TABLE CUSTOMERLEVEL;
+DROP TABLE CHANCES;
+DROP TABLE CHANCESTATE;
+DROP TABLE CHANCESPLAN;
+DROP TABLE CUSTOMER;
+DROP TABLE CUSTOMERLOST;
+DROP TABLE CUSTOMERCONTACT;
+DROP TABLE RELATIONSHIP;
+DROP TABLE ORDERS;
+DROP TABLE ORDERLIST;
+COMMIT;

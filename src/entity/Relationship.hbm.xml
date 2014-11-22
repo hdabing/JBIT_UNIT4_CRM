@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="entity.Relationship" table="RELATIONSHIP" >
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" precision="9" scale="0" />
+            <generator class="sequence" >
+            	<param name="sequence">relationshipid</param>
+            </generator>
+        </id>
+        <property name="customerid" type="java.lang.Integer">
+        	<column name="CUSTOMERID" />
+        </property>
+        <property name="relationtime" type="java.sql.Date">
+        	<column name="RELATIONTIME" />
+        </property>
+        <property name="address" type="java.lang.String">
+        	<column name="ADDRESS" length="20"/>
+        </property>
+        <property name="summary" type="java.lang.String">
+        	<column name="SUMMARY" length="20"/>
+        </property>
+        <property name="content" type="java.lang.String">
+        	<column name="CONTENT" length="20"/>
+        </property>
+        <property name="detail" type="java.lang.String">
+        	<column name="DETAIL" length="200"/>
+        </property>
+    </class>
+</hibernate-mapping>

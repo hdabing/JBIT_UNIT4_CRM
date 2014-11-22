@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="entity.Customer" table="CUSTOMER" >
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" precision="9" scale="0" />
+            <generator class="sequence" >
+            	<param name="sequence">customerid</param>
+            </generator>
+        </id>
+        <property name="name" type="java.lang.String">
+        	<column name="NAME" length="20"/>
+        </property>
+        <property name="code" type="java.lang.String">
+        	<column name="CODE" length="20" />
+        </property>
+        <property name="userid" type="java.lang.Integer">
+        	<column name="USERID" />
+        </property>
+        <property name="areaid" type="java.lang.Integer">
+        	<column name="AREAID" />
+        </property>
+        <property name="levelid" type="java.lang.Integer">
+        	<column name="LEVELID" />
+        </property>
+        <property name="managername" type="java.lang.String">
+        	<column name="MANAGERNAME" length="20" />
+        </property>
+        <property name="agreelevel" type="java.lang.Integer">
+        	<column name="AGREELEVEL" />
+        </property>
+        <property name="creditlevel" type="java.lang.Integer">
+        	<column name="CREDITLEVEL" />
+        </property>
+        <property name="address" type="java.lang.String">
+        	<column name="ADDRESS" length="50" />
+        </property>
+        <property name="postcode" type="java.lang.String">
+        	<column name="POSTCODE" length="20" />
+        </property>
+        <property name="phone" type="java.lang.String">
+        	<column name="PHONE" length="20" />
+        </property>
+        <property name="fax" type="java.lang.String">
+        	<column name="FAX" length="20" />
+        </property>
+        <property name="website" type="java.lang.String">
+        	<column name="WEBSITE" length="50" />
+        </property>
+        <property name="bussinesscode" type="java.lang.String">
+        	<column name="BUSSINESSCODE" length="50" />
+        </property>
+        <property name="regsmoney" type="java.lang.Float">
+        	<column name="REGSMONEY" />
+        </property>
+        <property name="regbank" type="java.lang.String">
+        	<column name="REGBANK" length="20" />
+        </property>
+        <property name="landtaxcode" type="java.lang.String">
+        	<column name="LANDTAXCODE" length="50" />
+        </property>
+        <property name="legalperson" type="java.lang.String">
+        	<column name="LEGALPERSON" length="20" />
+        </property>
+        <property name="bussinessmoney" type="java.lang.Float">
+        	<column name="BUSSINESSMONEY" />
+        </property>
+        <property name="bankaccount" type="java.lang.String">
+        	<column name="BANKACCOUNT" length="50" />
+        </property>
+        <property name="nationaltaxcode" type="java.lang.String">
+        	<column name="NATIONALTAXCODE" length="50" />
+        </property>
+        <property name="islost" type="java.lang.Integer">
+        	<column name="ISLOST" />
+        </property>
+        <property name="isdel" type="java.lang.Integer">
+        	<column name="ISDEL" />
+        </property>
+        <many-to-one name="users" class="entity.Users" fetch="select" update="false" insert="false">
+        	<column name="userid" />
+        </many-to-one>
+        <many-to-one name="area" class="entity.Area" fetch="select" update="false" insert="false">
+        	<column name="areaid" />
+        </many-to-one>
+        <many-to-one name="customerlevel" class="entity.Customerlevel" fetch="select" update="false" insert="false">
+        	<column name="levelid" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="entity.Roleauthor" table="ROLEAUTHOR" >
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" precision="9" scale="0" />
+            <generator class="sequence" >
+            	<param name="sequence">roleauthorid</param>
+            </generator>
+        </id>
+        <property name="roleid" type="java.lang.Integer">
+        	<column name="ROLEID" />
+        </property>
+        <property name="authorid" type="java.lang.Integer">
+        	<column name="AUTHORID" />
+        </property>
+        <property name="isdel" type="java.lang.Integer">
+        	<column name="ISDEL" />
+        </property>
+        <many-to-one name="author" class="entity.Author" fetch="select" update="false" insert="false">
+        	<column name="authorid" />
+        </many-to-one>
+        <many-to-one name="role" class="entity.Role" fetch="select" update="false" insert="false">
+        	<column name="roleid" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

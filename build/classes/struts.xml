@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.multipart.maxSize" value="9437184" />
+	<package name="default" namespace="/" extends="struts-default">
+	<interceptors>
+		<interceptor name="loginInterceptor" class="action.loginInterceptor" />
+		<interceptor-stack name="loginStack">
+			<interceptor-ref name="loginInterceptor" />
+			<interceptor-ref name="defaultStack" />
+		</interceptor-stack>
+	</interceptors>
+	
+	<default-interceptor-ref name="loginStack" />
+	<global-results>
+		<result name="login">/login.jsp</result>
+	</global-results>
+	<!--用户类-->
+		<action name="login" class="action.usersAction" method="login">
+			<result name="SUCCESS">index.jsp</result>
+			<result name="INPUT">login.jsp</result>
+		</action>
+		<action name="listUser" class="action.usersAction" method="listUser">
+			<result name="SUCCESS">user/listUser.jsp</result>
+		</action>
+		<action name="addUser" class="action.usersAction" method="addUser">
+			<result name="SUCCESS">user/addUser.jsp</result>
+		</action>
+		<action name="addUserOK" class="action.usersAction" method="addUserOK">
+			<result name="SUCCESS" type="redirectAction">queryListusers</result>
+		</action>
+		<action name="delUser" class="action.usersAction" method="delUser">
+			<result name="SUCCESS" type="redirectAction">queryListusers</result>
+		</action>
+		<action name="editUser" class="action.usersAction" method="editUser">
+			<result name="SUCCESS">user/editUser.jsp</result>
+		</action>
+		<action name="editUserOK" class="action.usersAction" method="editUserOK">
+			<result name="SUCCESS" type="redirectAction">queryListusers</result>
+		</action>
+		<action name="queryListusers" class="action.usersAction" method="queryListusers">
+			<result name="SUCCESS">user/listUser2.jsp</result>
+		</action>
+		<action name="queryUsersbyform" class="action.usersAction" method="queryUsersbyform">
+			<result name="SUCCESS">user/listUser2.jsp</result>
+		</action>
+		<action name="logOut" class="action.usersAction" method="logOut">
+			<result name="SUCCESS">login.jsp</result>
+		</action>
+	<!--角色操作类-->
+		<action name="listRole" class="action.roleAction" method="listRole">
+			<result name="SUCCESS">role/listRole.jsp</result>
+		</action>
+		<action name="delRole" class="action.roleAction" method="delRole">
+			<result name="SUCCESS" type="redirectAction">queryListrole</result>
+		</action>
+		<action name="editRole" class="action.roleAction" method="editRole">
+			<result name="SUCCESS">role/editRole.jsp</result>
+		</action>
+		<action name="editRoleOK" class="action.roleAction" method="editRoleOK">
+			<result name="SUCCESS" type="redirectAction">queryListrole</result>
+		</action>
+		<action name="addRole" class="action.roleAction" method="addRole">
+			<result name="SUCCESS">role/addRole.jsp</result>
+		</action>
+		<action name="addRoleOK" class="action.roleAction" method="addRoleOK">
+			<result name="SUCCESS" type="redirectAction">queryListrole</result>
+		</action>
+		<action name="queryListrole" class="action.roleAction" method="queryListrole">
+			<result name="SUCCESS">role/listRole2.jsp</result>
+		</action>
+		<action name="queryRolebyform" class="action.roleAction" method="queryRolebyform">
+			<result name="SUCCESS">role/listRole2.jsp</result>
+		</action>
+	<!--销售机会管理-->
+		<action name="listChances" class="action.chancesAction" method="listChances">
+			<result name="SUCCESS">chances/listChances.jsp</result>
+		</action>
+		<action name="addChances" class="action.chancesAction" method="addChances">
+			<result name="SUCCESS">chances/addChances.jsp</result>
+		</action>
+		<action name="addChancesOK" class="action.chancesAction" method="addChancesOK">
+			<result name="SUCCESS" type="redirectAction">queryListchances</result>
+		</action>
+		<action name="editChances" class="action.chancesAction" method="editChances">
+			<result name="SUCCESS">chances/editChances.jsp</result>
+		</action>
+		<action name="editChancesOK" class="action.chancesAction" method="editChancesOK">
+			<result name="SUCCESS" type="redirectAction">queryListchances</result>
+		</action>
+		<action name="delChances" class="action.chancesAction" method="delChances">
+			<result name="SUCCESS" type="redirectAction">queryListchances</result>
+		</action>
+		<action name="grantChances" class="action.chancesAction" method="grantChances">
+			<result name="SUCCESS">chances/grantChances.jsp</result>
+		</action>
+		<action name="grantChancesOK" class="action.chancesAction" method="grantChancesOK">
+			<result name="SUCCESS" type="redirectAction">queryListchances</result>
+		</action>
+		<action name="queryListchances" class="action.chancesAction" method="queryListchances">
+			<result name="SUCCESS">chances/listChances2.jsp</result>
+		</action>
+		<action name="queryChancesbyform" class="action.chancesAction" method="queryChancesbyform">
+			<result name="SUCCESS">chances/listChances2.jsp</result>
+		</action>
+		<action name="queryChancesplanbyform" class="action.chancesAction" method="queryChancesplanbyform">
+			<result name="SUCCESS">chances/listChancesplan2.jsp</result>
+		</action>
+	<!--销售计划管理-->
+		<action name="listChancesplan" class="action.chancesAction" method="listChancesplan">
+			<result name="SUCCESS">chances/listChancesplan.jsp</result>
+		</action>
+		<action name="addChancesplan" class="action.chancesAction" method="addChancesplan">
+			<result name="SUCCESS">chances/addChancesplan.jsp</result>
+		</action>
+		<action name="addChancesplanOK" class="action.chancesAction" method="addChancesplanOK">
+			<result name="SUCCESS" type="redirectAction">addChancesplan?id=${chancesplan.chancesid}</result>
+		</action>
+		<action name="delChancesplanOK" class="action.chancesAction" method="delChancesplanOK">
+			<result name="SUCCESS" type="redirectAction">queryListchancesofplan</result>
+		</action>
+		<action name="executeChancesplan" class="action.chancesAction" method="executeChancesplan">
+			<result name="SUCCESS">chances/executeChancesplan.jsp</result>
+		</action>
+		<action name="executeChancesplanOK" class="action.chancesAction" method="executeChancesplanOK">
+			<result name="SUCCESS" type="redirectAction">executeChancesplan?id=${chancesplan.chancesid}</result>
+		</action>
+		<action name="successChances" class="action.chancesAction" method="successChances">
+			<result name="SUCCESS" type="redirectAction">queryListchancesofplan</result>
+		</action>
+		<action name="failChances" class="action.chancesAction" method="failChances">
+			<result name="SUCCESS" type="redirectAction">queryListchancesofplan</result>
+		</action>
+		<action name="queryChancesplan" class="action.chancesAction" method="queryChancesplan">
+			<result name="SUCCESS">chances/queryChancesplan.jsp</result>
+		</action>
+		<action name="queryListchancesofplan" class="action.chancesAction" method="queryListchancesofplan">
+			<result name="SUCCESS">chances/listChancesplan2.jsp</result>
+		</action>
+	<!--客户管理类-->
+		<action name="listCustomer" class="action.customerAction" method="listCustomer">
+			<result name="SUCCESS">customer/listCustomer.jsp</result>
+		</action>
+		<action name="editCustomer" class="action.customerAction" method="editCustomer">
+			<result name="SUCCESS">customer/editCustomer.jsp</result>
+		</action>
+		<action name="editCustomerOK" class="action.customerAction" method="editCustomerOK">
+			<result name="SUCCESS" type="redirectAction">queryListcustomer</result>
+		</action>
+		<action name="delCustomer" class="action.customerAction" method="delCustomer">
+			<result name="SUCCESS" type="redirectAction">queryListcustomer</result>
+		</action>
+		<action name="addCustomer" class="action.customerAction" method="addCustomer">
+			<result name="SUCCESS">customer/addCustomer.jsp</result>
+		</action>
+		<action name="addCustomerOK" class="action.customerAction" method="addCustomerOK">
+			<result name="SUCCESS" type="redirectAction">queryListcustomer</result>
+		</action>
+		<action name="queryListcustomer" class="action.customerAction" method="queryListcustomer">
+			<result name="SUCCESS">customer/listCustomer2.jsp</result>
+		</action>
+		<action name="queryCustomerbyform" class="action.customerAction" method="queryCustomerbyform">
+			<result name="SUCCESS">customer/listCustomer2.jsp</result>
+		</action>
+	<!--客户联系人管理类-->
+		<action name="listCustomercontact" class="action.customerAction" method="listCustomercontact">
+			<result name="SUCCESS">customer/listCustomercontact.jsp</result>
+		</action>
+		<action name="editCustomercontact" class="action.customerAction" method="editCustomercontact">
+			<result name="SUCCESS">customer/editCustomercontact.jsp</result>
+		</action>
+		<action name="editCustomercontactOK" class="action.customerAction" method="editCustomercontactOK">
+			<result name="SUCCESS" type="redirectAction">listCustomercontact?id=${customercontact.customerid}</result>
+		</action>
+		<action name="addCustomercontact" class="action.customerAction" method="addCustomercontact">
+			<result name="SUCCESS">customer/addCustomercontact.jsp</result>
+		</action>
+		<action name="addCustomercontactOK" class="action.customerAction" method="addCustomercontactOK">
+			<result name="SUCCESS" type="redirectAction">listCustomercontact?id=${customercontact.customerid}</result>
+		</action>
+		<action name="delCustomercontact" class="action.customerAction" method="delCustomercontact">
+			<result name="SUCCESS" type="redirectAction">listCustomercontact?id=${customercontact.customerid}</result>
+		</action>
+	<!--客户交往记录管理类-->
+		<action name="listRelationship" class="action.customerAction" method="listRelationship">
+			<result name="SUCCESS">customer/listRelationship.jsp</result>
+		</action>
+		<action name="addRelationship" class="action.customerAction" method="addRelationship">
+			<result name="SUCCESS">customer/addRelationship.jsp</result>
+		</action>
+		<action name="addRelationshipOK" class="action.customerAction" method="addRelationshipOK">
+			<result name="SUCCESS" type="redirectAction">listRelationship?id=${relationship.customerid}</result>
+		</action>
+		<action name="editRelationship" class="action.customerAction" method="editRelationship">
+			<result name="SUCCESS">customer/editRelationship.jsp</result>
+		</action>
+		<action name="editRelationshipOK" class="action.customerAction" method="editRelationshipOK">
+			<result name="SUCCESS" type="redirectAction">listRelationship?id=${relationship.customerid}</result>
+		</action>
+		<action name="delRelationship" class="action.customerAction" method="delRelationship">
+			<result name="SUCCESS" type="redirectAction">listRelationship?id=${relationship.customerid}</result>
+		</action>
+	<!--订单管理类-->
+		<action name="listOrders" class="action.ordersAction" method="listOrders">
+			<result name="SUCCESS">order/listOrders.jsp</result>
+		</action>
+		<action name="listOrderlist" class="action.ordersAction" method="listOrderlist">
+			<result name="SUCCESS">order/listOrderlist.jsp</result>
+		</action>
+		<action name="queryListorders" class="action.ordersAction" method="queryListorders">
+			<result name="SUCCESS">order/listOrders2.jsp</result>
+		</action>
+	<!--客户流失管理-->
+		<action name="listCustomerlost" class="action.customerlostAction" method="listCustomerlost">
+			<result name="SUCCESS">customerlost/listCustomerlost.jsp</result>
+		</action>
+		<action name="listAgreelost" class="action.customerlostAction" method="listAgreelost">
+			<result name="SUCCESS">customerlost/listAgreelost.jsp</result>
+		</action>
+		<action name="agreeLost" class="action.customerlostAction" method="agreeLost">
+			<result name="SUCCESS">customerlost/agreeLost.jsp</result>
+		</action>
+		<action name="agreeLostOK" class="action.customerlostAction" method="agreeLostOK">
+			<result name="SUCCESS" type="redirectAction">queryListcustomerlost</result>
+		</action>
+		<action name="delayLost" class="action.customerlostAction" method="delayLost">
+			<result name="SUCCESS">customerlost/delayLost.jsp</result>
+		</action>
+		<action name="delayLostOK" class="action.customerlostAction" method="delayLostOK">
+			<result name="SUCCESS" type="redirectAction">queryListcustomerlost</result>
+		</action>
+		<action name="queryListcustomerlost" class="action.customerlostAction" method="queryListcustomerlost">
+			<result name="SUCCESS">customerlost/listCustomerlost2.jsp</result>
+		</action>
+		<action name="queryListcustomeragreelost" class="action.customerlostAction" method="queryListcustomeragreelost">
+			<result name="SUCCESS">customerlost/listAgreelost2.jsp</result>
+		</action>
+		<action name="queryCustomerlostbyform" class="action.customerlostAction" method="queryCustomerlostbyform">
+			<result name="SUCCESS">customerlost/listCustomerlost2.jsp</result>
+		</action>
+		<action name="queryAgreelostbyform" class="action.customerlostAction" method="queryAgreelostbyform">
+			<result name="SUCCESS">customerlost/listAgreelost2.jsp</result>
+		</action>
+	<!--服务管理-->
+		<action name="addServicelist" class="action.serviceAction" method="addServicelist">
+			<result name="SUCCESS">service/addServicelist.jsp</result>
+		</action>
+		<action name="addServicelistOK" class="action.serviceAction" method="addServicelistOK">
+			<result name="SUCCESS" type="redirectAction">addServicelist</result>
+		</action>
+		<action name="grantServicelist" class="action.serviceAction" method="grantServicelist">
+			<result name="SUCCESS">service/grantServicelist.jsp</result>
+		</action>
+		<action name="grantServicelistOK" class="action.serviceAction" method="grantServicelistOK">
+			<result name="SUCCESS" type="redirectAction">queryListgrantservicelist</result>
+		</action>
+		<action name="delServicelist" class="action.serviceAction" method="delServicelist">
+			<result name="SUCCESS" type="redirectAction">queryListgrantservicelist</result>
+		</action>
+		<action name="listOperatorservicelist" class="action.serviceAction" method="listOperatorservicelist">
+			<result name="SUCCESS">service/listOperatorservicelist.jsp</result>
+		</action>
+		<action name="operatorServicelist" class="action.serviceAction" method="operatorServicelist">
+			<result name="SUCCESS">service/operatorServicelist.jsp</result>
+		</action>
+		<action name="operatorServicelistOK" class="action.serviceAction" method="operatorServicelistOK">
+			<result name="SUCCESS" type="redirectAction">queryListoperatorservicelist</result>
+		</action>
+		<action name="listBackservicelist" class="action.serviceAction" method="listBackservicelist">
+			<result name="SUCCESS">service/listBackservicelist.jsp</result>
+		</action>
+		<action name="backServicelist" class="action.serviceAction" method="backServicelist">
+			<result name="SUCCESS">service/backServicelist.jsp</result>
+		</action>
+		<action name="backServicelistOK" class="action.serviceAction" method="backServicelistOK">
+			<result name="SUCCESS" type="redirectAction">queryListbackservicelist</result>
+		</action>
+		<action name="listArchservicelist" class="action.serviceAction" method="listArchservicelist">
+			<result name="SUCCESS">service/listArchservicelist.jsp</result>
+		</action>
+		<action name="archServicelist" class="action.serviceAction" method="archServicelist">
+			<result name="SUCCESS">service/archServicelist.jsp</result>
+		</action>
+		<action name="queryListgrantservicelist" class="action.serviceAction" method="queryListgrantservicelist">
+			<result name="SUCCESS">service/grantServicelist2.jsp</result>
+		</action>
+		<action name="queryListarchservicelist" class="action.serviceAction" method="queryListarchservicelist">
+			<result name="SUCCESS">service/listArchservicelist2.jsp</result>
+		</action>
+		<action name="queryListbackservicelist" class="action.serviceAction" method="queryListbackservicelist">
+			<result name="SUCCESS">service/listBackservicelist2.jsp</result>
+		</action>
+		<action name="queryListoperatorservicelist" class="action.serviceAction" method="queryListoperatorservicelist">
+			<result name="SUCCESS">service/listOperatorservicelist2.jsp</result>
+		</action>
+		<action name="queryServicelistbyform" class="action.serviceAction" method="queryServicelistbyform">
+			<result name="SUCCESS">service/queryServicelistbyform.jsp</result>
+		</action>
+		<action name="queryServicebyform" class="action.serviceAction" method="queryServicebyform">
+			<result name="SUCCESS">base/listService2.jsp</result>
+		</action>
+	<!--客户等级-->
+		<action name="listCustomerlevel" class="action.customerlevelAction" method="listCustomerlevel">
+			<result name="SUCCESS">base/listCustomerlevel.jsp</result>
+		</action>
+		<action name="addCustomerlevel" class="action.customerlevelAction" method="addCustomerlevel">
+			<result name="SUCCESS">base/addCustomerlevel.jsp</result>
+		</action>
+		<action name="addCustomerlevelOK" class="action.customerlevelAction" method="addCustomerlevelOK">
+			<result name="SUCCESS" type="redirectAction">queryListcustomerlevel</result>
+		</action>
+		<action name="editCustomerlevel" class="action.customerlevelAction" method="editCustomerlevel">
+			<result name="SUCCESS">base/editCustomerlevel.jsp</result>
+		</action>
+		<action name="editCustomerlevelOK" class="action.customerlevelAction" method="editCustomerlevelOK">
+			<result name="SUCCESS" type="redirectAction">queryListcustomerlevel</result>
+		</action>
+		<action name="delCustomerlevel" class="action.customerlevelAction" method="delCustomerlevel">
+			<result name="SUCCESS" type="redirectAction">queryListcustomerlevel</result>
+		</action>
+		<action name="queryListcustomerlevel" class="action.customerlevelAction" method="queryListcustomerlevel">
+			<result name="SUCCESS">base/listCustomerlevel2.jsp</result>
+		</action>
+		<action name="queryCustomerlevelbyform" class="action.customerlevelAction" method="queryCustomerlevelbyform">
+			<result name="SUCCESS">base/listCustomerlevel2.jsp</result>
+		</action>
+	<!--服务类型-->
+		<action name="listService" class="action.serviceAction" method="listService">
+			<result name="SUCCESS">base/listService.jsp</result>
+		</action>
+		<action name="addService" class="action.serviceAction" method="addService">
+			<result name="SUCCESS">base/addService.jsp</result>
+		</action>
+		<action name="addServiceOK" class="action.serviceAction" method="addServiceOK">
+			<result name="SUCCESS" type="redirectAction">queryListservice</result>
+		</action>
+		<action name="editService" class="action.serviceAction" method="editService">
+			<result name="SUCCESS">base/editService.jsp</result>
+		</action>
+		<action name="editServiceOK" class="action.serviceAction" method="editServiceOK">
+			<result name="SUCCESS" type="redirectAction">queryListservice</result>
+		</action>
+		<action name="delService" class="action.serviceAction" method="delService">
+			<result name="SUCCESS" type="redirectAction">queryListservice</result>
+		</action>
+		<action name="queryListservice" class="action.serviceAction" method="queryListservice">
+			<result name="SUCCESS">base/listService2.jsp</result>
+		</action>
+	<!--客户地区管理-->
+		<action name="listArea" class="action.areaAction" method="listArea">
+			<result name="SUCCESS">base/listArea.jsp</result>
+		</action>
+		<action name="addArea" class="action.areaAction" method="addArea">
+			<result name="SUCCESS">base/addArea.jsp</result>
+		</action>
+		<action name="addAreaOK" class="action.areaAction" method="addAreaOK">
+			<result name="SUCCESS" type="redirectAction">queryListarea</result>
+		</action>
+		<action name="editArea" class="action.areaAction" method="editArea">
+			<result name="SUCCESS">base/editArea.jsp</result>
+		</action>
+		<action name="delArea" class="action.areaAction" method="delArea">
+			<result name="SUCCESS" type="redirectAction">queryListarea</result>
+		</action>
+		<action name="editAreaOK" class="action.areaAction" method="editAreaOK">
+			<result name="SUCCESS" type="redirectAction">queryListarea</result>
+		</action>
+		<action name="queryListarea" class="action.areaAction" method="queryListarea">
+			<result name="SUCCESS">base/listArea2.jsp</result>
+		</action>
+		<action name="queryAreabyform" class="action.areaAction" method="queryAreabyform">
+			<result name="SUCCESS">base/listArea2.jsp</result>
+		</action>
+	<!--商品管理-->
+		<action name="listProduct" class="action.productAction" method="listProduct">
+			<result name="SUCCESS">base/listProduct.jsp</result>
+		</action>
+		<action name="listStore" class="action.productAction" method="listProduct">
+			<result name="SUCCESS">base/listStore.jsp</result>
+		</action>
+		<action name="queryListproduct" class="action.productAction" method="queryListproduct">
+			<result name="SUCCESS">base/listProduct2.jsp</result>
+		</action>
+		<action name="queryListstore" class="action.productAction" method="queryListstore">
+			<result name="SUCCESS">base/listStore2.jsp</result>
+		</action>
+		<action name="queryProductbyform" class="action.productAction" method="queryProductbyform">
+			<result name="SUCCESS">base/listProduct2.jsp</result>
+		</action>
+		<action name="queryStorebyform" class="action.productAction" method="queryStorebyform">
+			<result name="SUCCESS">base/listStore2.jsp</result>
+		</action>
+	<!--报表类-->
+		<action name="contr" class="action.reptAction" method="contr">
+			<result name="SUCCESS">rept/contr.jsp</result>
+		</action>
+		<action name="cons" class="action.reptAction" method="cons">
+			<result name="SUCCESS">rept/cons.jsp</result>
+		</action>
+		<action name="ser" class="action.reptAction" method="ser">
+			<result name="SUCCESS">rept/ser.jsp</result>
+		</action>
+		<action name="queryListordersamount" class="action.reptAction" method="queryListordersamount">
+			<result name="SUCCESS">rept/contr2.jsp</result>
+		</action>
+		<action name="queryListservicelistCount" class="action.reptAction" method="queryListservicelistCount">
+			<result name="SUCCESS">rept/ser2.jsp</result>
+		</action>
+		<action name="queryListcustomercount" class="action.reptAction" method="queryListcustomercount">
+			<result name="SUCCESS">rept/cons2.jsp</result>
+		</action>
+		<action name="queryContrbyform" class="action.reptAction" method="queryContrbyform">
+			<result name="SUCCESS">rept/contr2.jsp</result>
+		</action>
+		<action name="downLoadContr"  class="action.reptAction" method="downLoadContr">
+				<interceptor-ref name="basicStack"/>
+        		<interceptor-ref name="fileUpload">
+            		<param name="maximumSize">9437184</param>
+       			</interceptor-ref>
+        		<interceptor-ref name="validation"/>
+        		<interceptor-ref name="workflow"/>
+			<result name="SUCCESS" type="stream">
+				<param name="contentType">application/msexcel;charset=ISO8859-1</param>
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+				<param name="inputName">downLoadContrStream</param>
+			</result>
+		</action>
+		<action name="downLoadSer" class="action.reptAction" method="downLoadSer">
+		    <interceptor-ref name="basicStack"/>
+    		<interceptor-ref name="fileUpload"/>
+    		<interceptor-ref name="validation"/>
+    		<interceptor-ref name="workflow"/>
+			<result name="SUCCESS" type="stream">
+				<param name="contentType">application/msexcel;charset=UTF-8</param>
+ 				<param name="inputName">downLoadSerStream</param>
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+			</result>
+		</action>
+		<action name="downLoadCountlevel" class="action.reptAction" method="downLoadCountlevel">
+			<interceptor-ref name="basicStack"/>
+    		<interceptor-ref name="fileUpload"/>
+    		<interceptor-ref name="validation"/>
+    		<interceptor-ref name="workflow"/>
+			<result name="SUCCESS" type="stream">
+				<param name="contentType">application/msexcel;charset=UTF-8</param>
+				<param name="inputName">downLoadCountlevelStream</param>
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+			</result>
+		</action>
+		<action name="downLoadPDFContr" class="action.reptAction" method="downLoadPDFContr">
+			<interceptor-ref name="basicStack"/>
+    		<interceptor-ref name="fileUpload"/>
+    		<interceptor-ref name="validation"/>
+    		<interceptor-ref name="workflow"/>
+			<result name="SUCCESS" type="stream">
+				<param name="contentType">application/pdf;charset=UTF-8</param>
+				<param name="inputName">downLoadPDFContrStream</param>
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+			</result>
+		</action>
+		<action name="downLoadPDFSer" class="action.reptAction" method="downLoadPDFSer">
+			<interceptor-ref name="basicStack"/>
+    		<interceptor-ref name="fileUpload"/>
+    		<interceptor-ref name="validation"/>
+    		<interceptor-ref name="workflow"/>
+			<result name="SUCCESS" type="stream">
+				<param name="contentType">application/pdf;charset=UTF-8</param>
+				<param name="inputName">downLoadPDFContrStream</param>
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+			</result>
+		</action>
+		<action name="downLoadPDFCountlevel" class="action.reptAction" method="downLoadPDFCountlevel">
+			<interceptor-ref name="basicStack"/>
+    		<interceptor-ref name="fileUpload"/>
+    		<interceptor-ref name="validation"/>
+    		<interceptor-ref name="workflow"/>
+			<result name="SUCCESS" type="stream">
+				<param name="contentType">application/pdf;charset=UTF-8</param>
+				<param name="inputName">downLoadPDFContrStream</param>
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+			</result>
+		</action>
+    </package>
+</struts>

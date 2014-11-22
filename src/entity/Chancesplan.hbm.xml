@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="entity.Chancesplan" table="CHANCESPLAN" >
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" precision="9" scale="0" />
+            <generator class="sequence" >
+            	<param name="sequence">chancesplanid</param>
+            </generator>
+        </id>
+        <property name="chancesid" type="java.lang.Integer">
+        	<column name="CHANCESID" />
+        </property>
+        <property name="plantime" type="java.sql.Date">
+        	<column name="PLANTIME" />
+        </property>
+        <property name="planname" type="java.lang.String">
+        	<column name="PLANNAME" length="20" />
+        </property>
+        <property name="effect" type="java.lang.String">
+        	<column name="EFFECT" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>
